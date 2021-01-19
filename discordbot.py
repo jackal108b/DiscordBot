@@ -1,6 +1,7 @@
 from discord.ext import commands
 import os
 import traceback
+import random
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -12,10 +13,14 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
+@bot.command()
+async def suggest(ctx):
+    await ctx.send('おすすめです')
+
 
 @bot.command()
-async def test(ctx):
-    await ctx.send('pong')
+async def recommend(ctx):
+    await ctx.send('おすすめサンキュー')
 
 
 bot.run(token)
